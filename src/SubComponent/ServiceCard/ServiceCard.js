@@ -20,7 +20,7 @@ const ServiceCard = ({ service }) => {
           </div>
           <p> {shorDescirption}... </p>
           <div className="card-actions flex justify-between items-center">  
-            <Link to = {`/Services/${_id}`} className="btn btn-outline btn-success">View Details <AiOutlineArrowRight className="ml-3"/> </Link>
+            <Link to = {`/services/${_id}`} className="btn btn-outline btn-success">View Details <AiOutlineArrowRight className="ml-3"/> </Link>
             <div className="flex items-center text-lime-400"> <AiTwotoneStar className="mr-1" /> {rating} </div>
           </div>
         </div>

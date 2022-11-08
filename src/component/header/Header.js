@@ -24,7 +24,7 @@ const Header = () => {
       </label>
       <ul tabIndex={0} className="menu menu-compact custome_style dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
       <Link className='mx-2 text-blue-900 font-semibold' to ='/'> Home </Link>
-       <Link className='mx-2 text-blue-900 font-semibold' to ='/Services'> Services </Link>
+       <Link className='mx-2 text-blue-900 font-semibold' to ='/services'> Services </Link>
        {
        
        user?.uid ?
@@ -44,7 +44,7 @@ const Header = () => {
   <div className="navbar-end sm:hidden hidden md:block">
     <ul className='text-xl menu_ul'>
        <Link className='mx-2 font-semibold' to ='/'> Home </Link>
-       <Link className='mx-2 font-semibold' to ='/Services'> Services </Link>
+       <Link className='mx-2 font-semibold' to ='/services'> Services </Link>
        {
        
        user?.uid ?
