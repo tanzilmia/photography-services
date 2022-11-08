@@ -17,8 +17,8 @@ const Header = () => {
         <div className=' bg-zinc-800 drop-shadow text-lime-50'>
     <div className="navbar flex justify-between  m-auto w-10/12">
       <div className="navbar-start sm:navbar-end text-3xl sm:block font-semibold md:block">Dream PhotoGraphy</div>  
-  <div className="navbar-start md:hidden">
-    <div className="dropdown z-10">
+  <div className="navbar-start z-10 md:hidden">
+    <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost btn-circle">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
       </label>
