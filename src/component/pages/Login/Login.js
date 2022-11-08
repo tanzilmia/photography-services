@@ -1,28 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
-        <div className="hero min-h-screen bg-base-200">
-  <div className="hero-content flex-col lg:flex-row-reverse">
-    <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">Login now!</h1>
-      <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-    </div>
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div className='md:w-3/12 sm:w-10/12 w-10/12 lg:w-3/12  mt-9 m-auto'>
+      <div className="card flex-shrink-0 shadow-2xl bg-base-100">
       <div className="card-body">
+        <h2 className='text-2xl text-center'>Login Now</h2>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="text" placeholder="email" className="input input-bordered" />
+          <input type="text" name='email'  placeholder="email" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="text" placeholder="password" className="input input-bordered" />
+          <input type="text" name='password' placeholder="password" className="input input-bordered" />
           <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+            <Link to = '/signin' href="#" className="label-text-alt link link-hover">New To This Site ? Sign In Now  </Link>
+            
           </label>
         </div>
         <div className="form-control mt-6">
@@ -30,8 +28,8 @@ const Login = () => {
         </div>
       </div>
     </div>
-  </div>
-</div>
+    </div>
+
     );
 };
 
