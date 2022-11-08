@@ -5,6 +5,7 @@ import Login from "../component/pages/Login/Login";
 import MyReview from "../component/pages/MyReview/MyReview";
 import Services from "../component/pages/Services/Services";
 import Signin from "../component/pages/SignIn/Signin";
+import ServiceDetails from "../DynamicPage/ServiceDetails/ServiceDetails";
 import Main from "../Layout/Main";
 
 const router = createBrowserRouter([
@@ -17,7 +18,14 @@ const router = createBrowserRouter([
             },
 
             { path :'/Services',
-              element : <Services></Services>
+              element : <Services></Services>,
+              loader : ()=> fetch(`http://localhost:5000/services`)
+              
+            },
+            { path :'/Services/:id',
+              element : <ServiceDetails></ServiceDetails> ,
+              loader : ({params})=> fetch(`http://localhost:5000/services/${params.id}`)
+              
             },
 
             { path :'/Myreviews',

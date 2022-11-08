@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Bannar from '../../../SubComponent/Bannar/Bannar';
 import ServiceCard from '../../../SubComponent/ServiceCard/ServiceCard'
 
@@ -15,6 +15,7 @@ const Home = () => {
                 services.map(service=> <ServiceCard kye = {service._id} service ={service}></ServiceCard>)
             }
            </div>
+          <div className='w-40 m-auto mb-5'><Link to = '/Services' className='btn btn-success text-lime-50 w-full'>See All</Link></div>
 
         </div>
     );

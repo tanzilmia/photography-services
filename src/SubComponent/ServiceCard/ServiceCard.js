@@ -1,5 +1,7 @@
 import React from "react";
-
+import { AiTwotoneStar } from 'react-icons/ai';
+import { AiOutlineArrowRight } from 'react-icons/ai';
+import { Link } from "react-router-dom";
 const ServiceCard = ({ service }) => {
   console.log(service);
   const { description, image, price, rating, service_name, _id } = service;
@@ -17,9 +19,9 @@ const ServiceCard = ({ service }) => {
             <h2 className="text-2xl font-bold text-yellow-500"> ${price} </h2>
           </div>
           <p> {shorDescirption}... </p>
-          <div className="card-actions justify-end">
-            <div className="badge badge-outline">Fashion</div>
-            <div className="badge badge-outline">Products</div>
+          <div className="card-actions flex justify-between items-center">  
+            <Link to = {`/Services/${_id}`} className="btn btn-outline btn-success">View Details <AiOutlineArrowRight className="ml-3"/> </Link>
+            <div className="flex items-center text-lime-400"> <AiTwotoneStar className="mr-1" /> {rating} </div>
           </div>
         </div>
       </div>
