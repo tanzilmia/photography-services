@@ -1,11 +1,53 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { myContxt } from '../../../contextApi/AuthContext';
+import toast from 'react-hot-toast';
 
 const Signin = () => {
+  
+  const {SignIn,getProfile,setUser} = useContext(myContxt)
+  const neviget = useNavigate()
+  const handleSingin = (event) =>{
+    event.preventDefault()
+    const form = event.target
+    const name = form.name.value
+    const email = form.email.value
+    const photoURL = form.photoURL.value
+    const password = form.password.value
+    console.log(name,email,photoURL,password)
+    SignIn(email,password)
+    .then(result => {
+      const user = result.user
+      setUser(user)
+      updateProfile(name,photoURL)
+      console.log(user);
+      form.reset()
+      toast.success('Successfully SingIn!')
+      neviget('/')
+    })
+    .catch(err => {
+      if(err.message){
+        toast.error('Something is Wrong!')
+      }
+     
+    } )
+
+
+    const updateProfile = (name,photoURL) =>{
+      const profile = {
+        displayName : name,
+        photoURL : photoURL
+    }
+    getProfile(profile)
+
+    }
+  }
+
+
     return (
         <div className='md:w-3/12 sm:w-10/12 w-10/12 lg:w-3/12 mt-9 m-auto'>
         <div className="card flex-shrink-0 shadow-2xl bg-base-100">
-        <div className="card-body">
+        <form onSubmit={handleSingin} className="card-body">
           <h2 className='text-2xl text-center'>SignUp Now</h2>
           <div className="form-control">
             <label className="label">
@@ -35,10 +77,10 @@ const Signin = () => {
               
             </label>
           </div>
-          <div className="form-control mt-6">
+          <div className="form-control mt-3">
             <button className="btn btn-primary">SignUp</button>
           </div>
-        </div>
+        </form>
       </div>
       </div>
     );

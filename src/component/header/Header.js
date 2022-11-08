@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { myContxt } from '../../contextApi/AuthContext';
+import toast from 'react-hot-toast';
 
 const Header = () => {
+  const {user,logOut} = useContext(myContxt)
+
+  const handleLogout = () =>{
+    logOut()
+   .then(()=> toast.success('Successfully Logout!'))
+   .catch((err)=> toast.error(`${err.message}`))
+  }
+
+ 
     return (
         <div className='bg-base-100 drop-shadow'>
     <div className="navbar  m-auto w-10/12">
@@ -12,9 +23,19 @@ const Header = () => {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li><a>Homepage</a></li>
-        <li><a>Portfolio</a></li>
-        <li><a>About</a></li>
+      <Link className='mx-2 text-purple-800 font-semibold' to ='/'> Home </Link>
+       <Link className='mx-2 text-purple-800 font-semibold' to ='/Services'> Services </Link>
+       {
+       
+       user?.uid ?
+      <>
+       <Link className='mx-2 text-purple-800 font-semibold' to ='/Myreviews'> My reviews </Link>
+       <Link className='mx-2 text-purple-800 font-semibold' to ='/Addservice'> Add service </Link>
+       <button className='btn btn-warning' onClick={handleLogout}>logout</button>
+      </>
+      : 
+      <Link className='mx-2 text-purple-800 font-semibold' to ='/Login'>  Login </Link>
+       }
       </ul>
     </div>
 
@@ -24,10 +45,19 @@ const Header = () => {
     <ul className='text-xl'>
        <Link className='mx-2 text-purple-800 font-semibold' to ='/'> Home </Link>
        <Link className='mx-2 text-purple-800 font-semibold' to ='/Services'> Services </Link>
+       {
+       
+       user?.uid ?
+      <>
        <Link className='mx-2 text-purple-800 font-semibold' to ='/Myreviews'> My reviews </Link>
        <Link className='mx-2 text-purple-800 font-semibold' to ='/Addservice'> Add service </Link>
-       <Link className='mx-2 text-purple-800 font-semibold' to ='/Login'>  Login </Link>
-       <button>logout</button>
+       <button className='btn btn-warning' onClick={handleLogout}>logout</button>
+      </>
+      : 
+      <Link className='mx-2 text-purple-800 font-semibold' to ='/Login'>  Login </Link>
+       }
+     
+       
     </ul>
   </div>
 </div>
