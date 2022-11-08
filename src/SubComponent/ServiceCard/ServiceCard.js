@@ -11,11 +11,14 @@ const ServiceCard = ({ service }) => {
   return (
 
     <PhotoProvider>
-     <PhotoView src= {image}>
-     <div>
+     
+        <div>
     <div className="card w-96 bg-base-100 shadow-xl">
   <figure className="h-80">
-    <img src={image} className="h-full w-11/12 rounded-xl" alt="Shoes" />
+  <PhotoView src= {image}> 
+  <img src={image} className="h-full w-11/12 rounded-xl" alt="Shoes" />
+   </PhotoView>
+    
   </figure>
   <div className="card-body">
     <div className="flex justify-between">
@@ -30,8 +33,8 @@ const ServiceCard = ({ service }) => {
     </div>
   </div>
 </div>
-</div>
-    </PhotoView>
+       </div>
+    
     </PhotoProvider>
 
     
@@ -39,4 +42,6 @@ const ServiceCard = ({ service }) => {
 };
 
 export default ServiceCard;
+
+
 
