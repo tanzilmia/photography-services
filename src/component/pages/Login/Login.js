@@ -5,8 +5,20 @@ import toast from 'react-hot-toast';
 
 const Login = () => {
 
-  const {login,setUser}= useContext(myContxt)
+  const {login,setUser,googleSignin,}= useContext(myContxt)
   const naviget = useNavigate()
+
+  const handleGoogle = () =>{
+    googleSignin()
+    .then(result => {
+      const user = result.user
+      setUser(user)
+      naviget('/')
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
 
   const handleLogin = (event) =>{
     event.preventDefault()
@@ -52,7 +64,7 @@ const Login = () => {
         <div className="form-control mt-2">
           <button className="btn btn-primary">Login</button>
         </div>
-        <div className="form-control btn mt-0 text-center">
+        <div onClick={handleGoogle} className="form-control btn mt-0 text-center">
            Login WIth Google 
         </div>
       </form>
