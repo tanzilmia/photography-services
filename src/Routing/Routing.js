@@ -15,17 +15,18 @@ const router = createBrowserRouter([
 
             {path : '/',
              element : <Home></Home>,
-             loader : ()=> fetch(`https://assignment-server-mauve.vercel.app`)
+             loader : ()=> fetch(`https://assignment-server-mauve.vercel.app/shortservice`)
             },
 
             { path :'/services',
               element : <Services></Services>,
-              loader : ()=> fetch(`https://assignment-server-mauve.vercel.app/services`)
+              loader : ()=> fetch(`https://assignment-server-mauve.vercel.app`)
               
             },
             { path :'/services/:id',
               element : <ServiceDetails></ServiceDetails> ,
-              loader : ({params})=> fetch(`https://assignment-server-mauve.vercel.app/services/${params.id}`)
+              loader : ({params})=> fetch(`https://assignment-server-mauve.vercel.app/${params.id}`)
+              // loader : ({params})=> fetch(`https://assignment-server-mauve.vercel.app/services/${params.id}`)
               
             },
 

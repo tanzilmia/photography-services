@@ -19,7 +19,8 @@ const AddService = () => {
       price,
     };
 
-    fetch("https://assignment-server-mauve.vercel.app/services", {
+    fetch("https://assignment-server-mauve.vercel.app", {
+    // fetch("https://assignment-server-mauve.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",
