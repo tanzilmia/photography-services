@@ -48,7 +48,7 @@ const ServiceDetails = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/userreview?service_name=${service_name}`)
+    fetch(`https://assignment-server-mauve.vercel.app/userreview?service_name=${service_name}`)
     .then(res => res.json())
     .then(data => {
         setreviews(data)
