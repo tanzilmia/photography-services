@@ -7,6 +7,7 @@ import Services from "../component/pages/Services/Services";
 import Signin from "../component/pages/SignIn/Signin";
 import ServiceDetails from "../DynamicPage/ServiceDetails/ServiceDetails";
 import Main from "../Layout/Main";
+import EditeReview from "../SubComponent/EditeReview/EditeReview";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,12 @@ const router = createBrowserRouter([
             },
             { path :'/signin',
               element :<Signin></Signin>
+            },
+
+            { path :'/edite/:id',
+              element :<EditeReview></EditeReview>,
+              loader : ({params}) => fetch(`http://localhost:5000/edite/${params.id}`)
+
             },
             
         ]
