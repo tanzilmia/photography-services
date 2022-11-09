@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AiTwotoneStar } from "react-icons/ai";
 import {myContxt} from '../../contextApi/AuthContext'
+import moment from 'moment';
 import './Servicedetails.css'
 const ServiceDetails = () => {
  const [reviews, setreviews] = useState([])
  const {user} = useContext(myContxt)
- console.log(user)
+ 
 
   const service = useLoaderData();
   const { description, image, price, rating, service_name, _id } = service;
@@ -16,13 +17,15 @@ const ServiceDetails = () => {
     event.preventDefault()
     const form = event.target;
     const review = form.review.value
-   
+   const time = `${moment().format('Do MMM YY, h:mm')}`
 
     const userReview = {
         username : user?.displayName,
         review : review,
         userImg: user?.photoURL,
-        service_name : service_name
+        service_name : service_name,
+        time : time,
+        email :  user?.email
     }
     console.log(userReview);
 
@@ -39,12 +42,20 @@ const ServiceDetails = () => {
         console.log(data)
     })
     .catch(error => console.error(error))
-
-
     form.reset()
-
-
   }
+
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/userreview?service_name=${service_name}`)
+    .then(res => res.json())
+    .then(data => {
+        setreviews(data)
+    })
+
+  }, [service_name,reviews])
+
+  
 
 
 
@@ -69,7 +80,7 @@ const ServiceDetails = () => {
 
       {/* send Review  */}
       <div className="review_section m-auto w-5/12">
-        <h2 className="text-5xl text-center my-10">Send Your Review </h2>
+        <h2 className="text-5xl text-center my-10">Send Your Review  </h2>
             <form onSubmit={submitReview}>
              <div className="form_div">
             <input type="text" name = 'review' placeholder=" Enter Your Review Here " required />
@@ -80,7 +91,7 @@ const ServiceDetails = () => {
 
       {/* cusotomer Reviw  */}
       <div className="customer_reviews">
-
+        <h2 className="text-2xl"> {reviews.length} </h2>
       </div>
 
     </div>
