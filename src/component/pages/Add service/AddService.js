@@ -1,43 +1,37 @@
 import React from "react";
 
 const AddService = () => {
+  const getServiceInfo = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const service_name = form.service.value;
+    const image = form.image.value;
+    const description = form.description.value;
+    const rating = parseInt(form.rating.value);
+    const price = parseInt(form.price.value);
+    const services = {
+      service_name,
+      image,
+      description,
+      rating,
+      price,
+    };
 
-    const getServiceInfo = event =>{
-        event.preventDefault()
-        const form = event.target;
-        const service_name = form.service.value;
-        const image = form.image.value;
-        const description = form.description.value;
-        const rating = parseInt(form.rating.value);
-        const price = parseInt(form.price.value);
+    fetch("http://localhost:5000/services", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(services),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.error(error));
 
-        const services = {
-            service_name,
-            image,
-            description,
-            rating,
-            price
-
-        }
-
-        console.log(services);
-       
-        fetch('http://localhost:5000/userreview',{
-            method : 'POST',
-            headers : {
-              'content-type' : 'application/json'
-            },
-            body : JSON.stringify(services)
-          })
-          .then(res => res.json())
-          .then(data => {
-              console.log(data)
-          })
-          .catch(error => console.error(error))
-
-        form.reset()
-
-    }
+    form.reset();
+  };
 
   return (
     <div className="w-10/12 m-auto">
@@ -47,7 +41,6 @@ const AddService = () => {
       </h2>
 
       <form onSubmit={getServiceInfo} className="card grid grid-cols-2">
-
         <div className="card-body">
           <div className="form-control">
             <label className="label">
@@ -77,10 +70,20 @@ const AddService = () => {
             <label className="label">
               <span className="label-text">description</span>
             </label>
-            <textarea name="description" id="" cols="10" style={{border:'2px solid #ccc', padding : '10px', outline:'none', borderRadius :'10px'}} placeholder="description" rows="5"></textarea>
+            <textarea
+              name="description"
+              id=""
+              cols="10"
+              style={{
+                border: "2px solid #ccc",
+                padding: "10px",
+                outline: "none",
+                borderRadius: "10px",
+              }}
+              placeholder="description"
+              rows="5"
+            ></textarea>
           </div>
-
-
         </div>
         <div className="card-body">
           <div className="form-control">
@@ -108,10 +111,9 @@ const AddService = () => {
             />
           </div>
           <div className="form-control mt-6">
-          <button className="btn btn-primary">Add Service</button>
+            <button className="btn btn-primary">Add Service</button>
+          </div>
         </div>
-        </div>
-        
       </form>
     </div>
   );
