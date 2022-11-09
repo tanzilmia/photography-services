@@ -48,13 +48,13 @@ const ServiceDetails = () => {
 
 
   useEffect(() => {
-    fetch(`https://assignment-server-mauve.vercel.app/userreview?_id=${_id}`)
+    fetch(`https://assignment-server-mauve.vercel.app/userreview?service_name=${service_name}`)
     .then(res => res.json())
     .then(data => {
         setreviews(data)
     })
 
-  }, [_id,reviews])
+  }, [service_name,reviews])
 
   
 
