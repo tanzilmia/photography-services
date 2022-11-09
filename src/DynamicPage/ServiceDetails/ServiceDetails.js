@@ -31,7 +31,7 @@ const ServiceDetails = () => {
     console.log(userReview);
 
 
-    fetch('http://localhost:5000/userreview',{
+    fetch('https://assignment-server-mauve.vercel.app/userreview',{
       method : 'POST',
       headers : {
         'content-type' : 'application/json'
