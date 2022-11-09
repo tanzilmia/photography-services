@@ -7,7 +7,7 @@ const EditeReview = () => {
 
     const handleEdite = event =>{
         event.preventDefault()
-        fetch(`http://localhost:5000/userreview/${edit._id}`, {
+        fetch(`https://assignment-server-mauve.vercel.app/userreview/${edit._id}`, {
             method : 'PUT',
             headers : {
                 'content-type' : 'application/json'

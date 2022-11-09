@@ -45,7 +45,7 @@ const router = createBrowserRouter([
 
             { path :'/edite/:id',
               element :<EditeReview></EditeReview>,
-              loader : ({params}) => fetch(`http://localhost:5000/edite/${params.id}`)
+              loader : ({params}) => fetch(`https://assignment-server-mauve.vercel.app/edite/${params.id}`)
 
             },
             

@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { myContxt } from '../../../contextApi/AuthContext';
 import toast from 'react-hot-toast';
+import useTitleHooks from '../../../Hooks/useTitleHooks';
 
 const Login = () => {
-
+ useTitleHooks('Login')
   const {login,setUser,googleSignin,}= useContext(myContxt)
   const naviget = useNavigate()
 

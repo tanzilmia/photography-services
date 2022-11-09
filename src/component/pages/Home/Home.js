@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitleHooks from '../../../Hooks/useTitleHooks';
 import Bannar from '../../../SubComponent/Bannar/Bannar';
 import ServiceCard from '../../../SubComponent/ServiceCard/ServiceCard'
 
 
 const Home = () => {
    const services = useLoaderData()
-    
+    useTitleHooks('Home')
     return (
         <div>
             <Bannar></Bannar>

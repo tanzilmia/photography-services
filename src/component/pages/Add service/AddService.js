@@ -1,6 +1,8 @@
 import React from "react";
+import useTitleHooks from "../../../Hooks/useTitleHooks";
 
 const AddService = () => {
+  useTitleHooks('Add Services')
   const getServiceInfo = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -17,7 +19,7 @@ const AddService = () => {
       price,
     };
 
-    fetch("http://localhost:5000/services", {
+    fetch("https://assignment-server-mauve.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",

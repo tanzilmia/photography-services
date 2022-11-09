@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {myContxt} from '../../../contextApi/AuthContext'
+import useTitleHooks from '../../../Hooks/useTitleHooks';
 import PersonalReview from '../../../SubComponent/PersonalReview/PersonalReview';
 
 const MyReview = () => {
-
+  useTitleHooks("My Review")
   const [myreviews, setmyreviews] = useState([])
   const {user} = useContext(myContxt)
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myreviw?email=${user?.email}`)
+    fetch(`https://assignment-server-mauve.vercel.app/myreviw?email=${user?.email}`)
     .then(res => res.json())
     .then(data => {
       setmyreviews(data)
@@ -19,7 +20,7 @@ const MyReview = () => {
   
 const handleDelete = (myrvw) =>{
 
-      fetch(`http://localhost:5000/userreview/${myrvw._id}`,{
+      fetch(`https://assignment-server-mauve.vercel.app/userreview/${myrvw._id}`,{
           method : 'DELETE'
       })
       .then(res => res.json())

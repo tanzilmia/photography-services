@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 const ServiceCard = ({ service }) => {
-  console.log(service);
   const { description, image, price, rating, service_name, _id } = service;
   let shorDescirption = description.slice(0,100)
+
+  
+
   return (
 
     <PhotoProvider>
