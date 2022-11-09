@@ -53,6 +53,7 @@ const ServiceDetails = () => {
     .then(data => {
         setreviews(data)
     })
+    .catch(err => console.log(err))
 
   }, [service_name,reviews])
 
