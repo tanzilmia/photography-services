@@ -52,7 +52,7 @@ const EditeReview = () => {
               rows="5"
               className='w-full'
             ></textarea>
-            <button>Update Review </button>
+            <button className='btn btn-primary my-5'>Update Review </button>
 
         </form>
     );

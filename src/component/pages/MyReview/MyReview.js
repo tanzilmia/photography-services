@@ -51,8 +51,9 @@ const handleDelete = (myrvw) =>{
         <th>service Name</th> 
         <th>Review Message</th>
         <th>Time</th>
-        <th>Delete</th>
         <th>Edite</th>
+        <th>Delete</th>
+      
       </tr>
     </thead>
     <tbody>
