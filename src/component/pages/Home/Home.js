@@ -11,6 +11,7 @@ const Home = () => {
     return (
         <div>
             <Bannar></Bannar>
+            
            <div className="services_card w-10/12 grid md:grid-cols-3  my-10 gap-3 m-auto">
             {
                 services.map(service=> <ServiceCard kye = {service._id} service ={service}></ServiceCard>)

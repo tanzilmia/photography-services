@@ -7,7 +7,7 @@ const PrivetRouting = ({children}) => {
     const location = useLocation()
    
     if(loadding){
-        return <h2 className='text-5xl'>Loadding ...</h2>
+        return <div className="w-2/12 m-auto mt-10 bg-slate-300 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
     }
     
     if(!user?.uid){
