@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import useTitleHooks from '../../../Hooks/useTitleHooks';
 import Bannar from '../../../SubComponent/Bannar/Bannar';
+import DownloadApp from '../../../SubComponent/DownloadAPP/DownloadApp';
+import Gallary from '../../../SubComponent/Gallary/Gallary';
 import ServiceCard from '../../../SubComponent/ServiceCard/ServiceCard'
 
 
@@ -18,7 +20,8 @@ const Home = () => {
             }
            </div>
           <div className='w-40 m-auto mb-5'><Link to = '/Services' className='btn btn-success text-lime-50 w-full'>See All</Link></div>
-
+                <Gallary></Gallary>
+            <DownloadApp></DownloadApp>
         </div>
     );
 };
