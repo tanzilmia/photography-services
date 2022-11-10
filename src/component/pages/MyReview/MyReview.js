@@ -6,18 +6,28 @@ import PersonalReview from '../../../SubComponent/PersonalReview/PersonalReview'
 const MyReview = () => {
   useTitleHooks("My Review")
   const [myreviews, setmyreviews] = useState([])
-  const {user} = useContext(myContxt)
+  const {user,logOut} = useContext(myContxt)
 
 
   useEffect(() => {
-    fetch(`https://assignment-server-mauve.vercel.app/myreviw?email=${user?.email}`)
-    .then(res => res.json())
+    fetch(`https://assignment-server-mauve.vercel.app/myreviw?email=${user?.email}`,{
+      headers : {
+        authorization : `Bearar ${localStorage.getItem('myReviewToken')}`
+      }
+    })
+    .then(res => {
+      if(res.status === 401 || res.status === 403){
+        logOut()
+       }
+      return res.json()
+    })
     .then(data => {
       setmyreviews(data)
     })
 
-  }, [user?.email])
-  
+  }, [user?.email,logOut])
+
+
 const handleDelete = (myrvw) =>{
 
       fetch(`https://assignment-server-mauve.vercel.app/userreview/${myrvw._id}`,{

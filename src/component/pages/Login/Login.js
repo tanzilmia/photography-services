@@ -6,7 +6,7 @@ import useTitleHooks from '../../../Hooks/useTitleHooks';
 
 const Login = () => {
  useTitleHooks('Login')
-  const {login,setUser,googleSignin,}= useContext(myContxt)
+  const {login,  setUser,googleSignin,}= useContext(myContxt)
   const naviget = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
@@ -35,6 +35,26 @@ const Login = () => {
       console.log(user)
       setUser(user)
       toast.success('Successfully Login!')
+
+
+      // JWS TOKEN
+
+      const currentUser = {
+        email : user.email 
+    }
+    fetch(`https://assignment-server-mauve.vercel.app/jwt`,{
+        method : 'POST',
+        headers : {
+            'content-type' : 'application/json'
+        },
+        body : JSON.stringify(currentUser)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        localStorage.setItem('myReviewToken', data.token)
+    })
+
       naviget(from, {replace:true})
     })
     .catch(err => {
