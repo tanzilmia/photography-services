@@ -14,7 +14,6 @@ const PersonalReview = ({myrvw,handleDelete}) => {
       <td>{time}</td>
       <td> <Link to = {`/edite/${_id}`}><button className="btn btn-info"> <BsFillPenFill/> </button></Link></td>
       <td> <button className="btn btn-info" onClick={()=>handleDelete(myrvw)}> <AiFillDelete/> </button> </td>
-      
     </tr>
   );
 };

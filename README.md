@@ -12,3 +12,6 @@
 * react-photo-view
 * react-router-dom
 * mamba ui ( telwind custome ui library)
+
+
+[ Disclaimer : সুধু মাএ signup করেলেই কাজ হবে না my Review পেইজ দেখার জন্য আপনাকে অবস্যই login করতে হবে । ]
