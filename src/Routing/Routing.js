@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import BlogPage from "../component/BlogPage/BlogPage";
 import Error from "../component/ErrorPage/Error";
 import AddService from "../component/pages/Add service/AddService";
 import Home from "../component/pages/Home/Home";
@@ -10,7 +11,7 @@ import ServiceDetails from "../DynamicPage/ServiceDetails/ServiceDetails";
 import Main from "../Layout/Main";
 import EditeReview from "../SubComponent/EditeReview/EditeReview";
 import PrivetRouting from "./PrivetRouting";
-
+// basic routing 
 const router = createBrowserRouter([
     {
         path : '/',
@@ -32,7 +33,6 @@ const router = createBrowserRouter([
             { path :'/services/:id',
               element : <ServiceDetails></ServiceDetails> ,
               loader : ({params})=> fetch(`https://assignment-server-mauve.vercel.app/${params.id}`)
-              // loader : ({params})=> fetch(`https://assignment-server-mauve.vercel.app/services/${params.id}`)
               
             },
 
@@ -48,6 +48,9 @@ const router = createBrowserRouter([
             },
             { path :'/signin',
               element :<Signin></Signin>
+            },
+            { path :'/blog',
+              element :<BlogPage></BlogPage>
             },
 
             { path :'/edite/:id',
