@@ -6,7 +6,7 @@ import useTitleHooks from '../../../Hooks/useTitleHooks';
 
 const Login = () => {
  useTitleHooks('Login')
-  const {login,  setUser,googleSignin,}= useContext(myContxt)
+  const {login,loadding,  setUser,googleSignin,}= useContext(myContxt)
   const naviget = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
@@ -78,6 +78,10 @@ const Login = () => {
     })
 
   }
+
+  if(loadding){
+    return <div className="w-2/12 m-auto mt-10 bg-slate-300 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+}
 
     return (
     <div className='md:w-3/12 sm:w-10/12 w-10/12 lg:w-3/12  mt-9 m-auto'>

@@ -6,7 +6,7 @@ import useTitleHooks from '../../../Hooks/useTitleHooks';
 
 const Signin = () => {
   useTitleHooks('SignUp')
-  const {SignIn,getProfile,setUser} = useContext(myContxt)
+  const {SignIn,getProfile,setUser,loadding} = useContext(myContxt)
   const neviget = useNavigate()
   const handleSingin = (event) =>{
     event.preventDefault()
@@ -43,6 +43,10 @@ const Signin = () => {
 
     }
   }
+
+  if(loadding){
+    return <div className="w-2/12 m-auto mt-10 bg-slate-300 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+}
 
 
     return (
