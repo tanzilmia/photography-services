@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Error from "../component/ErrorPage/Error";
 import AddService from "../component/pages/Add service/AddService";
 import Home from "../component/pages/Home/Home";
 import Login from "../component/pages/Login/Login";
@@ -12,7 +13,11 @@ import PrivetRouting from "./PrivetRouting";
 
 const router = createBrowserRouter([
     {
-        path : '/', element : <Main></Main>, children : [
+        path : '/',
+       element : <Main></Main>,
+       errorElement : <Error></Error>,
+
+         children : [
 
             {path : '/',
              element : <Home></Home>,

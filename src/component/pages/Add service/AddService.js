@@ -1,8 +1,10 @@
 import React from "react";
 import useTitleHooks from "../../../Hooks/useTitleHooks";
-
+import toast from 'react-hot-toast';
 const AddService = () => {
   useTitleHooks('Add Services')
+
+  // get all service info funciton
   const getServiceInfo = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -18,9 +20,8 @@ const AddService = () => {
       rating,
       price,
     };
-
+    // post services
     fetch("https://assignment-server-mauve.vercel.app", {
-    // fetch("https://assignment-server-mauve.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,9 +30,12 @@ const AddService = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        toast.success('Successfully Added!')
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error)
+        toast.error('something is Wrong!')
+      });
 
     form.reset();
   };
