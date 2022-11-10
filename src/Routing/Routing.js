@@ -8,6 +8,7 @@ import Signin from "../component/pages/SignIn/Signin";
 import ServiceDetails from "../DynamicPage/ServiceDetails/ServiceDetails";
 import Main from "../Layout/Main";
 import EditeReview from "../SubComponent/EditeReview/EditeReview";
+import PrivetRouting from "./PrivetRouting";
 
 const router = createBrowserRouter([
     {
@@ -31,11 +32,11 @@ const router = createBrowserRouter([
             },
 
             { path :'/Myreviews',
-              element : <MyReview></MyReview>
+              element : <PrivetRouting><MyReview></MyReview></PrivetRouting>
             },
 
             { path :'/Addservice',
-              element :<AddService></AddService>
+              element :<PrivetRouting><AddService></AddService></PrivetRouting>
             },
             { path :'/Login',
               element :<Login></Login>

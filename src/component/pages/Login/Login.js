@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { myContxt } from '../../../contextApi/AuthContext';
 import toast from 'react-hot-toast';
 import useTitleHooks from '../../../Hooks/useTitleHooks';
@@ -8,13 +8,14 @@ const Login = () => {
  useTitleHooks('Login')
   const {login,setUser,googleSignin,}= useContext(myContxt)
   const naviget = useNavigate()
-
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
   const handleGoogle = () =>{
     googleSignin()
     .then(result => {
       const user = result.user
       setUser(user)
-      naviget('/')
+      naviget(from, {replace:true})
     })
     .catch(err => {
       console.log(err)
@@ -34,7 +35,7 @@ const Login = () => {
       console.log(user)
       setUser(user)
       toast.success('Successfully Login!')
-      naviget('/')
+      naviget(from, {replace:true})
     })
     .catch(err => {
       toast.error(`${err.message}`)
